@@ -9,7 +9,6 @@
 
 <body>
   <main class="builder-page">
-
     <section class="builder-ui">
 
       <header class="builder-nav">
@@ -32,12 +31,12 @@
         </div>
 
         <div class="preview-frame">
-          <div id="weatherWidget" class="widget pink small-square">
+          <div id="previewWeatherWidget" class="widget pink small-square">
             <div class="weather-content">
-              <img id="weatherIcon" />
-              <p id="locationName"></p>
-              <p id="temperature"></p>
-              <p id="description"></p>
+              <img id="previewWeatherIcon" />
+              <p id="previewLocationName"></p>
+              <p id="previewTemperature"></p>
+              <p id="previewDescription"></p>
             </div>
           </div>
         </div>
@@ -50,7 +49,6 @@
         </div>
 
         <div class="control-panel">
-
           <div class="top-left-controls">
             <div id="locationBtn" class="btn location-btn" title="type location">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -59,9 +57,7 @@
             </div>
 
             <div id="themeToggle" class="btn theme-toggle-btn" title="select theme"></div>
-
             <div id="appearanceToggle" class="btn appearance-toggle-btn" title="background">bg</div>
-
             <div id="fontToggle" class="btn font-toggle-btn" title="font">Aa</div>
 
             <div id="locationPopup" class="location-popup hidden">
@@ -90,7 +86,6 @@
             <div class="font-option" data-font="serif">serif</div>
             <div class="font-option" data-font="mono">mono</div>
           </div>
-
         </div>
       </section>
 
@@ -123,9 +118,7 @@
         <div class="info-card">
           <p class="section-label">dashboard tip</p>
           <h2>Best placement</h2>
-          <p>
-            This widget looks cutest beside your clock, calendar, or daily planner section.
-          </p>
+          <p>This widget looks cutest beside your clock, calendar, or daily planner section.</p>
         </div>
       </section>
 
@@ -169,6 +162,15 @@
 
     </section>
   </main>
+
+  <div id="weatherWidget" class="widget pink small-square embed-widget">
+    <div class="weather-content">
+      <img id="weatherIcon" />
+      <p id="locationName"></p>
+      <p id="temperature"></p>
+      <p id="description"></p>
+    </div>
+  </div>
 
   <script src="weather.js"></script>
 </body>
