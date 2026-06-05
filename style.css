@@ -497,7 +497,7 @@ body.appearance-transparent {
 }
 
 body.appearance-light {
-  --page-bg: #fffafc;
+  --page-bg: #ffffff;
   --panel-bg: rgba(255,255,255,0.95);
   --panel-text: #444;
   --panel-border: rgba(0,0,0,0.08);
