@@ -46,7 +46,7 @@ function copyWidgetLink() {
   const theme = localStorage.getItem("userTheme") || "pink";
   const font = localStorage.getItem("userFont") || "default";
   const appearance = localStorage.getItem("userAppearance") || "transparent";
-  
+
   const url = buildWidgetURL(city, theme, font, appearance);
 
   navigator.clipboard.writeText(url);
@@ -57,43 +57,11 @@ function copyWidgetLink() {
     message.classList.remove("hidden");
     message.classList.add("show");
   }
+
   if (!isEmbed && copyLinkBtn) {
-  copyLinkBtn.style.display = "none";
+    copyLinkBtn.style.display = "none";
+  }
 }
-
-} 
-
-appearanceToggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  appearanceOptions.classList.toggle("hidden");
-});
-
-appearanceChoices.forEach(option => {
-  option.addEventListener("click", () => {
-    const appearance = option.getAttribute("data-appearance");
-
-    applyAppearance(appearance);
-
-    appearanceOptions.classList.add("hidden");
-  });
-});
-
-fontToggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  fontOptions.classList.toggle("hidden");
-});
-
-fontChoices.forEach(option => {
-  option.addEventListener("click", () => {
-    const font = option.getAttribute("data-font");
-
-    localStorage.setItem("userFont", font);
-
-    applyFont(font);
-
-    fontOptions.classList.add("hidden");
-  });
-});
 
 function applyFont(font) {
   let fontFamily = "";
@@ -108,6 +76,7 @@ function applyFont(font) {
 
   weatherWidget.style.fontFamily = fontFamily;
 }
+
 function applyAppearance(appearance) {
   document.body.classList.remove(
     "appearance-transparent",
@@ -119,7 +88,6 @@ function applyAppearance(appearance) {
   document.body.classList.add(`appearance-${appearance}`);
   localStorage.setItem("userAppearance", appearance);
 }
-
 
 locationBtn.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -148,9 +116,11 @@ cityInput.addEventListener("keydown", (e) => {
     }
   }
 });
+
 cityInput.addEventListener("blur", () => {
   locationPopup.classList.add("hidden");
 });
+
 document.addEventListener("click", (e) => {
   const isClickInsidePopup = locationPopup?.contains(e.target);
   const isClickLocationBtn = locationBtn.contains(e.target);
@@ -167,11 +137,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const urlTheme = params.get("theme");
   const urlFont = params.get("font");
   const urlAppearance = params.get("appearance");
-  const savedAppearance = urlAppearance || localStorage.getItem("userAppearance") || "transparent";
 
   const savedCity = urlCity || localStorage.getItem("userCity");
   const savedTheme = urlTheme || localStorage.getItem("userTheme");
   const savedFont = urlFont || localStorage.getItem("userFont");
+  const savedAppearance = urlAppearance || localStorage.getItem("userAppearance") || "transparent";
 
   if (savedCity) {
     cityInput.value = savedCity;
@@ -180,20 +150,20 @@ window.addEventListener("DOMContentLoaded", () => {
     getWeather("Los Angeles");
   }
 
- if (savedTheme) {
-  weatherWidget.className = `widget ${savedTheme} small-square`;
-} else {
-  weatherWidget.className = `widget pink small-square`;
-}
-applyAppearance(savedAppearance);
-// apply font AFTER theme so it doesn't get wiped
-if (savedFont) {
-  applyFont(savedFont);
-} else {
-  applyFont("default");
-}
-});
+  if (savedTheme) {
+    weatherWidget.className = `widget ${savedTheme} small-square`;
+  } else {
+    weatherWidget.className = `widget pink small-square`;
+  }
 
+  applyAppearance(savedAppearance);
+
+  if (savedFont) {
+    applyFont(savedFont);
+  } else {
+    applyFont("default");
+  }
+});
 
 function getWeather(city) {
   if (!city) return;
@@ -208,6 +178,7 @@ function getWeather(city) {
     .then(data => {
       const mainWeather = data.weather[0].main;
       const iconURL = iconMap[mainWeather] || cloudIconURL;
+
       weatherIcon.src = iconURL;
       weatherIcon.alt = data.weather[0].description;
 
@@ -224,32 +195,104 @@ function getWeather(city) {
     });
 }
 
-
 if (copyLinkBtn) {
   copyLinkBtn.addEventListener("click", copyWidgetLink);
 }
 
-themeToggle.addEventListener("click", () => {
-  themeOptions.classList.toggle("hidden");
-});
+if (themeToggle && themeOptions) {
+  themeToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    themeOptions.classList.toggle("hidden");
+
+    fontOptions?.classList.add("hidden");
+    appearanceOptions?.classList.add("hidden");
+  });
+}
 
 themeCircles.forEach(circle => {
   circle.addEventListener("click", () => {
     const theme = circle.getAttribute("data-theme");
 
     weatherWidget.className = `widget ${theme} small-square`;
+
     localStorage.setItem("userTheme", theme);
-    
+
     themeOptions.classList.add("hidden");
   });
-  
-document.addEventListener("click", (e) => {
-  const clickedInsideFont = fontOptions.contains(e.target);
-  const clickedFontBtn = fontToggle.contains(e.target);
+});
 
-  if (!clickedInsideFont && !clickedFontBtn) {
+if (appearanceToggle && appearanceOptions) {
+  appearanceToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    appearanceOptions.classList.toggle("hidden");
+
+    themeOptions?.classList.add("hidden");
+    fontOptions?.classList.add("hidden");
+  });
+}
+
+appearanceChoices.forEach(option => {
+  option.addEventListener("click", () => {
+    const appearance = option.getAttribute("data-appearance");
+
+    applyAppearance(appearance);
+
+    appearanceOptions.classList.add("hidden");
+  });
+});
+
+if (fontToggle && fontOptions) {
+  fontToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    fontOptions.classList.toggle("hidden");
+
+    themeOptions?.classList.add("hidden");
+    appearanceOptions?.classList.add("hidden");
+  });
+}
+
+fontChoices.forEach(option => {
+  option.addEventListener("click", () => {
+    const font = option.getAttribute("data-font");
+
+    localStorage.setItem("userFont", font);
+
+    applyFont(font);
+
+    fontOptions.classList.add("hidden");
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (
+    themeOptions &&
+    themeToggle &&
+    !themeOptions.contains(e.target) &&
+    !themeToggle.contains(e.target)
+  ) {
+    themeOptions.classList.add("hidden");
+  }
+
+  if (
+    appearanceOptions &&
+    appearanceToggle &&
+    !appearanceOptions.contains(e.target) &&
+    !appearanceToggle.contains(e.target)
+  ) {
+    appearanceOptions.classList.add("hidden");
+  }
+
+  if (
+    fontOptions &&
+    fontToggle &&
+    !fontOptions.contains(e.target) &&
+    !fontToggle.contains(e.target)
+  ) {
     fontOptions.classList.add("hidden");
   }
 });
-  
-});
+
+
