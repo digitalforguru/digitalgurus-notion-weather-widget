@@ -595,8 +595,31 @@ html.embed-mode body {
   background: var(--page-bg, transparent) !important;
 }
 
-html.embed-mode .builder-ui {
+html.embed-mode .builder-ui > *:not(.preview-card) {
   display: none !important;
+}
+
+html.embed-mode .preview-card {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html.embed-mode .preview-card .section-heading {
+  display: none !important;
+}
+
+html.embed-mode .preview-frame {
+  width: 210px !important;
+  height: 100px !important;
+  min-height: 100px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
 }
 
 html.embed-mode .builder-page {
@@ -642,4 +665,14 @@ html.embed-mode #weatherWidget {
     flex-wrap: wrap;
     width: min(320px, 92vw);
   }
+}
+html.embed-mode body,
+html.embed-mode .builder-page,
+html.embed-mode .builder-ui {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 210px !important;
+  height: 100px !important;
+  min-height: 100px !important;
 }
