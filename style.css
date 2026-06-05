@@ -567,6 +567,7 @@ body.appearance-dark .appearance-option:hover {
   }
 }
 
+
 /* EMBED MODE */
 
 .embed-widget {
@@ -575,20 +576,17 @@ body.appearance-dark .appearance-option:hover {
 
 html.embed-mode,
 html.embed-mode body {
-  width: 210px !important;
-  height: 100px !important;
-  min-width: 210px !important;
-  min-height: 100px !important;
-  max-width: 210px !important;
-  max-height: 100px !important;
-  overflow: hidden !important;
-  background: var(--page-bg, transparent) !important;
-  background-color: var(--page-bg, transparent) !important;
-}
-
-html.embed-mode body {
+  width: 180px !important;
+  height: 180px !important;
+  min-width: 180px !important;
+  min-height: 180px !important;
+  max-width: 180px !important;
+  max-height: 180px !important;
   margin: 0 !important;
   padding: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 html.embed-mode body::before {
@@ -601,11 +599,11 @@ html.embed-mode .builder-page {
 
 html.embed-mode .embed-widget {
   display: flex !important;
-  width: 210px !important;
-  height: 100px !important;
-  border-radius: 0 !important;
+  width: 180px !important;
+  height: 180px !important;
+  border-radius: 22px !important;
+  margin: 0 !important;
 }
-
 /* MOBILE */
 
 @media (max-width: 700px) {
