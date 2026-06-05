@@ -488,4 +488,39 @@ html.embed-mode .builder-ui {
 .widget.font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
+/* Appearance modes - separate from color themes */
+
+body.appearance-transparent {
+  --widget-bg: transparent;
+  --appearance-border: transparent;
+}
+
+body.appearance-light {
+  --widget-bg: #fffafc;
+  --appearance-border: rgba(0,0,0,0.08);
+}
+
+body.appearance-dark {
+  --widget-bg: #17171a;
+  --appearance-border: rgba(255,255,255,0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  body.appearance-system {
+    --widget-bg: #fffafc;
+    --appearance-border: rgba(0,0,0,0.08);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.appearance-system {
+    --widget-bg: #17171a;
+    --appearance-border: rgba(255,255,255,0.1);
+  }
+}
+
+.widget {
+  border: 1px solid var(--appearance-border, transparent);
+  box-shadow: none !important;
+}
 
