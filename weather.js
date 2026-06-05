@@ -9,6 +9,9 @@ const locationBtn = document.getElementById("locationBtn");
 const themeToggle = document.getElementById("themeToggle");
 const themeOptions = document.getElementById("themeOptions");
 const themeCircles = document.querySelectorAll(".theme-circle");
+const appearanceToggle = document.getElementById("appearanceToggle");
+const appearanceOptions = document.getElementById("appearanceOptions");
+const appearanceChoices = document.querySelectorAll(".appearance-option");
 const fontToggle = document.getElementById("fontToggle");
 const fontOptions = document.getElementById("fontOptions");
 const fontChoices = document.querySelectorAll(".font-option");
@@ -32,18 +35,19 @@ if (isEmbed) {
   if (builderUI) builderUI.style.display = "none";
 }
 
-function buildWidgetURL(city, theme, font) {
+function buildWidgetURL(city, theme, font, appearance) {
   const base = window.location.origin + window.location.pathname;
 
-  return `${base}?city=${encodeURIComponent(city)}&theme=${theme}&font=${font}&embed=true`;
+  return `${base}?city=${encodeURIComponent(city)}&theme=${theme}&font=${font}&appearance=${appearance}&embed=true`;
 }
 
 function copyWidgetLink() {
   const city = localStorage.getItem("userCity") || "Los Angeles";
   const theme = localStorage.getItem("userTheme") || "pink";
   const font = localStorage.getItem("userFont") || "default";
-
-  const url = buildWidgetURL(city, theme, font);
+  const appearance = localStorage.getItem("userAppearance") || "transparent";
+  
+  const url = buildWidgetURL(city, theme, font, appearance);
 
   navigator.clipboard.writeText(url);
 
@@ -58,6 +62,21 @@ function copyWidgetLink() {
 }
 
 } 
+
+appearanceToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
+  appearanceOptions.classList.toggle("hidden");
+});
+
+appearanceChoices.forEach(option => {
+  option.addEventListener("click", () => {
+    const appearance = option.getAttribute("data-appearance");
+
+    applyAppearance(appearance);
+
+    appearanceOptions.classList.add("hidden");
+  });
+});
 
 fontToggle.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -88,6 +107,17 @@ function applyFont(font) {
   }
 
   weatherWidget.style.fontFamily = fontFamily;
+}
+function applyAppearance(appearance) {
+  document.body.classList.remove(
+    "appearance-transparent",
+    "appearance-light",
+    "appearance-dark",
+    "appearance-system"
+  );
+
+  document.body.classList.add(`appearance-${appearance}`);
+  localStorage.setItem("userAppearance", appearance);
 }
 
 
@@ -136,6 +166,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const urlCity = params.get("city");
   const urlTheme = params.get("theme");
   const urlFont = params.get("font");
+  const urlAppearance = params.get("appearance");
+  const savedAppearance = urlAppearance || localStorage.getItem("userAppearance") || "transparent";
 
   const savedCity = urlCity || localStorage.getItem("userCity");
   const savedTheme = urlTheme || localStorage.getItem("userTheme");
@@ -153,7 +185,7 @@ window.addEventListener("DOMContentLoaded", () => {
 } else {
   weatherWidget.className = `widget pink small-square`;
 }
-
+applyAppearance(savedAppearance);
 // apply font AFTER theme so it doesn't get wiped
 if (savedFont) {
   applyFont(savedFont);
