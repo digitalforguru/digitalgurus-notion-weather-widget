@@ -585,8 +585,8 @@ html.embed-mode body {
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
-  background: transparent !important;
-  background-color: transparent !important;
+  background: var(--page-bg) !important;
+  background-color: var(--page-bg) !important;
 }
 
 html.embed-mode body::before {
