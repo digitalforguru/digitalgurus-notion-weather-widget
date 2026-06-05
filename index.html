@@ -6,101 +6,170 @@
   <title>DigitalGuru's Weather Widget</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-  <body>
 
-  <div class="builder-ui">
-    <div class="widget-header">
-  DigitalGuru's Notion Weather Widget
-</div>
+<body>
+  <main class="builder-page">
 
-<div id="themeOptions" class="theme-options hidden">
-  <div class="theme-circle pink" data-theme="pink"></div>
-  <div class="theme-circle beige" data-theme="beige"></div>
-  <div class="theme-circle blue" data-theme="blue"></div>
-  <div class="theme-circle green" data-theme="green"></div>
-  <div class="theme-circle black" data-theme="black"></div>
-  <div class="theme-circle white" data-theme="white"></div>
-</div>
+    <section class="builder-ui">
 
-<div id="appearanceOptions" class="theme-options hidden appearance-options">
-  <div class="appearance-option" data-appearance="light">light</div>
-  <div class="appearance-option" data-appearance="dark">dark</div>
-  <div class="appearance-option" data-appearance="system">system</div>
-</div>
+      <header class="builder-nav">
+        <a href="../studio.html" class="back-link">← back to studio</a>
+        <span class="status-pill">weather widget</span>
+      </header>
 
-<div id="fontOptions" class="theme-options hidden">
-  <div class="font-option" data-font="default">default</div>
-  <div class="font-option" data-font="serif">serif</div>
-  <div class="font-option" data-font="mono">mono</div>
-</div>
+      <section class="hero-card">
+        <p class="eyebrow">digitalguru widget setup</p>
+        <h1>Weather Widget</h1>
+        <p class="hero-subtitle">
+          customize your weather widget, copy your embed link, and paste it into Notion.
+        </p>
+      </section>
 
-    
-    <div id="usageTip" class="usage-tip">
-    Welcome to your Notion widget by DigitalGuru!<br>
-    view your weather daily with our layout built for Notion<br>
-    - click options to customize (all options match Notion pages, eg; colors, fonts)<br>
-    - copy your embed link<br>
-    - paste into Notion ✧
-  </div>
+      <section class="preview-card">
+        <div class="section-heading">
+          <p class="section-label">live preview</p>
+          <h2>See your widget before copying</h2>
+        </div>
 
-    <div class="top-left-controls">
+        <div class="preview-frame">
+          <div id="weatherWidget" class="widget pink small-square">
+            <div class="weather-content">
+              <img id="weatherIcon" />
+              <p id="locationName"></p>
+              <p id="temperature"></p>
+              <p id="description"></p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <div id="locationBtn" class="btn location-btn" title="type location">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-      <path d="M128 0C93 0 64 29 64 64c0 46 64 192 64 192s64-146 64-192C192 29 163 0 128 0zm0 88a24 24 0 1 1 0-48 24 24 0 0 1 0 48z"/>
-    </svg>
-  </div>
+      <section class="customize-card">
+        <div class="section-heading">
+          <p class="section-label">customize</p>
+          <h2>Make it match your dashboard</h2>
+        </div>
 
-  <div id="themeToggle" class="btn theme-toggle-btn" title="select theme"></div>
+        <div class="control-panel">
 
-  <div id="appearanceToggle" class="btn appearance-toggle-btn" title="background">bg</div>
+          <div class="top-left-controls">
+            <div id="locationBtn" class="btn location-btn" title="type location">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <path d="M128 0C93 0 64 29 64 64c0 46 64 192 64 192s64-146 64-192C192 29 163 0 128 0zm0 88a24 24 0 1 1 0-48 24 24 0 0 1 0 48z"/>
+              </svg>
+            </div>
 
-  <div id="fontToggle" class="btn font-toggle-btn" title="font">Aa</div>
+            <div id="themeToggle" class="btn theme-toggle-btn" title="select theme"></div>
 
-  <div id="locationPopup" class="location-popup hidden">
-    <div class="location-title">type your city</div>
-    <input id="cityInput" class="city-input" placeholder="e.g. london, tokyo, la" />
-  </div>
+            <div id="appearanceToggle" class="btn appearance-toggle-btn" title="background">bg</div>
 
-</div>
+            <div id="fontToggle" class="btn font-toggle-btn" title="font">Aa</div>
 
-    <div class="setup-area">
-      <button id="copyLinkBtn" class="copy-btn">
-        copy my embed Notion link .ᐟ.ᐟ
-      </button>
+            <div id="locationPopup" class="location-popup hidden">
+              <div class="location-title">type your city</div>
+              <input id="cityInput" class="city-input" placeholder="e.g. london, tokyo, la" />
+            </div>
+          </div>
 
-      <p id="copyMessage" class="copy-message hidden">
-        copied! paste into notion .ᐟ.ᐟ
-      </p>
-    </div>
-    
-<div class="footer-links">
+          <div id="themeOptions" class="theme-options hidden">
+            <div class="theme-circle pink" data-theme="pink"></div>
+            <div class="theme-circle beige" data-theme="beige"></div>
+            <div class="theme-circle blue" data-theme="blue"></div>
+            <div class="theme-circle green" data-theme="green"></div>
+            <div class="theme-circle black" data-theme="black"></div>
+            <div class="theme-circle white" data-theme="white"></div>
+          </div>
 
-  <a href="https://stan.store/digitalforguru" target="_blank" class="footer-link">
-    shop digitalguru
-  </a>
+          <div id="appearanceOptions" class="theme-options hidden appearance-options">
+            <div class="appearance-option" data-appearance="light">light</div>
+            <div class="appearance-option" data-appearance="dark">dark</div>
+            <div class="appearance-option" data-appearance="system">system</div>
+          </div>
 
-  <span class="divider">•</span>
+          <div id="fontOptions" class="theme-options hidden">
+            <div class="font-option" data-font="default">default</div>
+            <div class="font-option" data-font="serif">serif</div>
+            <div class="font-option" data-font="mono">mono</div>
+          </div>
 
-  <a href="https://tiktok.com/@digitaluru" target="_blank" class="footer-link">
-    socials
-  </a>
-  
-</div>
-  
-  </div>
+        </div>
+      </section>
 
-  <div id="weatherWidget" class="widget pink small-square">
+      <section class="setup-card">
+        <div class="section-heading">
+          <p class="section-label">embed</p>
+          <h2>Copy your Notion link</h2>
+        </div>
 
-    <div class="weather-content">
-      <img id="weatherIcon" />
-      <p id="locationName"></p>
-      <p id="temperature"></p>
-      <p id="description"></p>
-    </div>
-    
-  </div>
-    
+        <button id="copyLinkBtn" class="copy-btn">
+          copy my embed Notion link .ᐟ.ᐟ
+        </button>
+
+        <p id="copyMessage" class="copy-message hidden">
+          copied! paste into Notion .ᐟ.ᐟ
+        </p>
+      </section>
+
+      <section class="guide-grid">
+        <div class="info-card">
+          <p class="section-label">quick start</p>
+          <h2>How to use it</h2>
+          <ol>
+            <li>Customize your location, theme, background, and font.</li>
+            <li>Copy your embed link.</li>
+            <li>Paste it into Notion using <strong>/embed</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="info-card">
+          <p class="section-label">dashboard tip</p>
+          <h2>Best placement</h2>
+          <p>
+            This widget looks cutest beside your clock, calendar, or daily planner section.
+          </p>
+        </div>
+      </section>
+
+      <section class="faq-card">
+        <p class="section-label">help</p>
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>How do I add this to Notion?</summary>
+          <p>Copy your embed link, go to Notion, type /embed, paste the link, and confirm.</p>
+        </details>
+
+        <details>
+          <summary>Can I change the theme later?</summary>
+          <p>Yes. Come back to this builder page, update your settings, and copy the new link.</p>
+        </details>
+
+        <details>
+          <summary>Why is my widget background showing?</summary>
+          <p>Use the background option to switch between light, dark, or system mode.</p>
+        </details>
+      </section>
+
+      <section class="updates-card">
+        <p class="section-label">recent updates</p>
+        <h2>Weather Widget v1.0</h2>
+        <ul>
+          <li>Added light, dark, and system background options.</li>
+          <li>Added matching Notion-style themes.</li>
+          <li>Added custom city support.</li>
+        </ul>
+      </section>
+
+      <footer class="footer-links">
+        <a href="../studio.html" class="footer-link">back to studio</a>
+        <span class="divider">•</span>
+        <a href="https://stan.store/digitalforguru" target="_blank" class="footer-link">shop digitalguru</a>
+        <span class="divider">•</span>
+        <a href="https://tiktok.com/@digitaluru" target="_blank" class="footer-link">socials</a>
+      </footer>
+
+    </section>
+  </main>
+
   <script src="weather.js"></script>
 </body>
 </html>
