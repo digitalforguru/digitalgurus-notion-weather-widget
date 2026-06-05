@@ -5,7 +5,7 @@
 }
 
 :root {
-  --page-bg: #fff7fb;
+  --page-bg: #ffffff;
   --text: #2f252b;
   --muted: #7d6873;
   --card-bg: rgba(255, 255, 255, 0.78);
@@ -503,15 +503,8 @@ body::before {
 
 /* APPEARANCE */
 
-body.appearance-transparent {
-  --page-bg: transparent;
-  --panel-bg: rgba(255,255,255,0.95);
-  --panel-text: #444;
-  --panel-border: rgba(0,0,0,0.08);
-}
-
 body.appearance-light {
-  --page-bg: #fff7fb;
+  --page-bg: #ffffff;
   --panel-bg: rgba(255,255,255,0.95);
   --panel-text: #444;
   --panel-border: rgba(0,0,0,0.08);
@@ -547,7 +540,7 @@ body.appearance-dark .appearance-option:hover {
 
 @media (prefers-color-scheme: light) {
   body.appearance-system {
-    --page-bg: #fff7fb;
+    --page-bg: #ffffff;
     --panel-bg: rgba(255,255,255,0.95);
     --panel-text: #444;
     --panel-border: rgba(0,0,0,0.08);
@@ -566,7 +559,6 @@ body.appearance-dark .appearance-option:hover {
     --panel-border: rgba(255,255,255,0.1);
   }
 }
-
 
 /* EMBED MODE */
 
