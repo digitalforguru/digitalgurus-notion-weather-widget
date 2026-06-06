@@ -4,7 +4,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root :
+:root {
+  --page-bg: #ffffff;
   --text: #2f252b;
   --muted: #7d6873;
   --card-bg: rgba(255, 255, 255, 0.78);
