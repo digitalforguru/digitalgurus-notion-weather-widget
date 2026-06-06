@@ -559,6 +559,52 @@ body.appearance-dark .appearance-option:hover {
     --panel-border: rgba(255,255,255,0.1);
   }
 }
+body.appearance-dark .preview-frame,
+body.appearance-system .preview-frame {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(28, 28, 28, 0.92),
+      rgba(18, 18, 18, 0.86)
+    );
+  border: 1px dashed rgba(255,255,255,0.08);
+}
+
+body.appearance-dark .faq-card details,
+body.appearance-system .faq-card details {
+  background: rgba(0,0,0,0.22);
+  border-color: rgba(255,255,255,0.06);
+}
+
+body.appearance-dark .hero-card,
+body.appearance-system .hero-card {
+  background: rgba(20,20,20,0.88);
+}
+
+body.appearance-dark .preview-card,
+body.appearance-dark .customize-card,
+body.appearance-dark .setup-card,
+body.appearance-dark .info-card,
+body.appearance-dark .faq-card,
+body.appearance-dark .updates-card {
+  background: rgba(28,28,28,0.82);
+}
+@media (prefers-color-scheme: dark) {
+  body.appearance-system .preview-frame {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(28, 28, 28, 0.92),
+        rgba(18, 18, 18, 0.86)
+      );
+    border: 1px dashed rgba(255,255,255,0.08);
+  }
+
+  body.appearance-system .faq-card details {
+    background: rgba(0,0,0,0.22);
+    border-color: rgba(255,255,255,0.06);
+  }
+}
 /* EMBED MODE */
 
 .embed-widget {
