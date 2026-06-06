@@ -511,7 +511,7 @@ body.appearance-light {
 }
 
 body.appearance-dark {
-  --page-bg: #111111;
+  --page-bg: #191919;
   --text: #f6f1f4;
   --muted: #c9b8c1;
   --card-bg: rgba(25,25,25,0.82);
@@ -549,7 +549,7 @@ body.appearance-dark .appearance-option:hover {
 
 @media (prefers-color-scheme: dark) {
   body.appearance-system {
-    --page-bg: #111111;
+    --page-bg: #191919;
     --text: #f6f1f4;
     --muted: #c9b8c1;
     --card-bg: rgba(25,25,25,0.82);
