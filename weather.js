@@ -104,7 +104,7 @@ function copyWidgetLink() {
   const city = localStorage.getItem("userCity") || "Los Angeles";
   const theme = localStorage.getItem("userTheme") || "pink";
   const font = localStorage.getItem("userFont") || "default";
-  const appearance = localStorage.getItem("userAppearance") || "transparent";
+  const appearance = localStorage.getItem("userAppearance") || "system";
 
   const url = buildWidgetURL(city, theme, font, appearance);
 
