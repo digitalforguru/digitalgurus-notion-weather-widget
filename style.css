@@ -4,8 +4,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root {
-  --page-bg: #ffffff;
+:root :
   --text: #2f252b;
   --muted: #7d6873;
   --card-bg: rgba(255, 255, 255, 0.78);
@@ -559,7 +558,6 @@ body.appearance-dark .appearance-option:hover {
     --panel-border: rgba(255,255,255,0.1);
   }
 }
-
 /* EMBED MODE */
 
 .embed-widget {
@@ -577,6 +575,15 @@ html.embed-mode body {
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
+  border-radius: 22px !important;
+}
+
+html.embed-mode {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html.embed-mode body {
   background: var(--page-bg) !important;
   background-color: var(--page-bg) !important;
 }
@@ -594,6 +601,7 @@ html.embed-mode .embed-widget {
   width: 180px !important;
   height: 180px !important;
   border-radius: 22px !important;
+  overflow: hidden !important;
   margin: 0 !important;
 }
 /* MOBILE */
